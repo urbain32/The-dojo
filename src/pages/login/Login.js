@@ -10,8 +10,7 @@ export default function Login() {
   const { login, isPending, error } = useLogin();
   const handleSubmit = (e) => {
     e.preventDefault();
-    // login(email, password);
-    console.log(email,password)
+    login(email, password);
   };
   return (
     <form className='auth-form' onSubmit={handleSubmit}>
@@ -36,14 +35,13 @@ export default function Login() {
           value={password}
         />
       </label>
-      <button className='btn'>Login</button>
-      {/* {!isPending && <button className='btn'>Login</button>}
+      {!isPending && <button className='btn'>Login</button>}
       {isPending && (
         <button className='btn' disabled>
           Loading...
         </button>
       )}
-      {error && <div className='error'>{error}</div>} */}
+      {error && <div className='error'>{error}</div>}
     </form>
   );
 }
