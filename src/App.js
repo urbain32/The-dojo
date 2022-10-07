@@ -20,28 +20,32 @@ function App() {
       {/* then the information will be shawn */}
       {authIsReady && (
         <BrowserRouter>
-          <Sidebar />
+          {user && <Sidebar />}
           <div className='container'>
             <Navbar />
             <Switch>
               <Route exact path='/'>
-                <Dashboard />
+                {user && <Dashboard />}
+                {!user && <Redirect to='/login' />}
               </Route>
 
               <Route path='/create'>
-                <Create />
+                {user && <Create />}
+                {!user && <Redirect to='/login' />}
               </Route>
 
               <Route path='/projects/:id'>
-                <Project />
+                {user && <Project />}
+                {!user && <Redirect to='/login' />}
               </Route>
 
               <Route path='/login'>
-                <Login />
+                {!user && <Login />}
+                {user && <Redirect to='/' />}
               </Route>
-
               <Route path='/signup'>
-                <Signup />
+                {!user && <Signup />}
+                {user && <Redirect to='/' />}
               </Route>
             </Switch>
           </div>
