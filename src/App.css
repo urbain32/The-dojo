@@ -1,7 +1,9 @@
 .App {
   display: flex;
+  /* position: fixed; */
 }
 .App .container{
   flex-grow: 1;
   padding: 0 60px;
+  /* position: fixed; */
 }
