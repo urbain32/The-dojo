@@ -22,7 +22,7 @@
 }
 
 .custom-file-input::before {
-  content: '▲ Profile Thumbnail';
+  content: '▲ SELECT';
   color: #fff;
   display: inline-block;
   background: var(--primary-color);
@@ -31,7 +31,8 @@
   white-space: nowrap;
   --webkit-user-select: none;
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 400px;
+  font-size: larger;
   border-radius: 2px;
   outline: none;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),

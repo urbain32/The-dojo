@@ -74,6 +74,7 @@ export default function Signup() {
       </label>
 
       <label>
+        <span>Profile Thumbnail:</span>
         <input
           className='custom-file-input'
           required
