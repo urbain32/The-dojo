@@ -9,6 +9,9 @@
 .auth-form h2 {
   text-align: center;
 }
+.auth-form .btn{
+  margin-left: 150px;
+}
 
 /*custom inpu file*/
 .custom-file-input {
