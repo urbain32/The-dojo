@@ -27,6 +27,7 @@ export default function Sidebar() {
                 <span>New project</span>
               </NavLink>
             </li>
+            
           </ul>
         </div>
       </div>
