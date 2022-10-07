@@ -9,7 +9,6 @@ const categories = [
   { value: 'sales', label: 'Sales' },
   { value: 'marketing', label: 'Marketing' },
 ];
-
 export default function Create() {
   const { documents } = useCollection('users');
   const [users, setUsers] = useState([]);
@@ -21,7 +20,7 @@ export default function Create() {
   const [dueDate, setDueDate] = useState('');
   const [category, setCategory] = useState('');
   const [assignedUsers, setAssignedUsers] = useState([]);
-
+  const [formError,setFormError] = useState(null)
   // create a functon to map document
   useEffect(() => {
     if (documents) {
@@ -34,7 +33,16 @@ export default function Create() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, details, dueDate, category,assignedUsers);
+    setFormError(null)
+    if (!category) {
+      setFormError('Please select a project category')
+      return
+    }
+    if (assignedUsers.length<1) {
+      setFormError('Please assign at the project to at least 1 user ');
+      return
+    }
+    console.log(name, details, dueDate, category.value,assignedUsers);
   };
   return (
     <div className='create-form'>
@@ -87,6 +95,7 @@ export default function Create() {
           />
         </label>
         <button className='btn'>Add project</button>
+        {formError && <p className='error'>{formError}</p>}
       </form>
     </div>
   );
