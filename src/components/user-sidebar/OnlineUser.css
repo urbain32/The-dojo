@@ -48,6 +48,101 @@
 }
 @media screen and (max-width: 1200px) {
 .user-list {
-  display: none;
+  width: 150px;
+  min-width: 150px;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fbfbfb;
+  color: var(--heading-color);
+}
+.user-list h2 {
+  text-align: right;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 1.2em;
+}
+.user-list .user-list-item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px auto;
+}
+.user-list .avatar {
+  margin-left: 10px;
+  width: 35px;
+  height: 35px;
+}
+
+/* online users */
+.user-list .online-user {
+  display: inline-block;
+  margin-right: 10px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--heading-color);
+  background: #0ebb50;
+  border-radius: 50%;
+  margin-top: 2px;
+}
+.user-list .notonline-user {
+  display: inline-block;
+  margin-right: 10px;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-color);
+  border: 1px solid var(--heading-color);
+  border-radius: 50%;
+  margin-top: 2px;
+}
+}
+@media screen and (max-width: 740px) {
+  .user-list {
+  width: 150px;
+  min-width: 150px;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fbfbfb;
+  color: var(--heading-color);
+}
+.user-list h2 {
+  text-align: right;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 1.2em;
+}
+.user-list .user-list-item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px auto;
+}
+.user-list .avatar {
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+/* online users */
+.user-list .online-user {
+  display: inline-block;
+  margin-right: 10px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--heading-color);
+  background: #0ebb50;
+  border-radius: 50%;
+  margin-top: 2px;
+}
+.user-list .notonline-user {
+  display: inline-block;
+  margin-right: 10px;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-color);
+  border: 1px solid var(--heading-color);
+  border-radius: 50%;
+  margin-top: 2px;
 }
 }
