@@ -45,3 +45,18 @@
 .sidebar .links .active img {
   filter: invert(40%);
 }
+@media screen and (max-width: 1200px) {
+.sidebar {
+  width: 200px;
+  min-width: 200px;
+  background: var(--primary-color);
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  color: #fff;
+}
+.sidebar-content {
+  position:absolute;
+  width: inherit;
+}
+}

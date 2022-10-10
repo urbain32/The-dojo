@@ -7,14 +7,14 @@
   color: var(--heading-color);
 }
 .user-list h2 {
-  text-align: center;
+  text-align: right;
   margin-bottom: 40px;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
   font-size: 1.2em;
 }
 .user-list .user-list-item {
-  display: block;
+  display: flex;
   justify-content: flex-end;
   align-items: center;
   margin: 20px auto;
@@ -45,4 +45,9 @@
   border: 1px solid var(--heading-color);
   border-radius: 50%;
   margin-top: 2px;
+}
+@media screen and (max-width: 1200px) {
+.user-list {
+  display: none;
+}
 }

@@ -3,6 +3,10 @@ import './Create.css';
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { useCollection } from '../../hooks/useCollection';
+import { timestamp } from '../../firebase/config';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import { useFirestore } from '../../hooks/useFirestore';
+import { useHistory } from 'react-router-dom';
 const categories = [
   { value: 'development', label: 'Development' },
   { value: 'design', label: 'Design' },
@@ -12,7 +16,9 @@ const categories = [
 export default function Create() {
   const { documents } = useCollection('users');
   const [users, setUsers] = useState([]);
-
+  const { user } = useAuthContext();
+  const { addDocument,response} = useFirestore('projects')
+ const redirect = useHistory()
 
   // form field values
   const [name, setName] = useState('');
@@ -20,30 +26,61 @@ export default function Create() {
   const [dueDate, setDueDate] = useState('');
   const [category, setCategory] = useState('');
   const [assignedUsers, setAssignedUsers] = useState([]);
-  const [formError,setFormError] = useState(null)
+  const [formError, setFormError] = useState(null);
   // create a functon to map document
   useEffect(() => {
     if (documents) {
-      const options = documents.map(user => {
-        return {value:user,label:user.displayName}
-      })
-      setUsers(options)
+      const options = documents.map((user) => {
+        return { value: user, label: user.displayName };
+      });
+      setUsers(options);
     }
-  },[documents])
+  }, [documents]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormError(null)
+    setFormError(null);
     if (!category) {
-      setFormError('Please select a project category')
-      return
+      setFormError('Please select a project category');
+      return;
     }
-    if (assignedUsers.length<1) {
+    if (assignedUsers.length < 1) {
       setFormError('Please assign at the project to at least 1 user ');
-      return
+      return;
     }
-    console.log(name, details, dueDate, category.value,assignedUsers);
-  };
+
+    // created by
+    const createdBy = {
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      id:user.uid
+    }
+    // assigned user list object
+    const assignedUsersList = assignedUsers.map(u => {
+      return {
+        displayName: u.value.displayName,
+        photoURL: u.value.photoURL,
+        id: u.value.id,
+      };
+    })
+
+    // creating a variable that will save all our sate in firebase
+    const project = {
+      name,
+      details,
+      category: category.value,
+      dueDate: timestamp.fromDate(new Date(dueDate)),
+      comments: [],
+      createdBy,
+      assignedUsersList,
+    };
+    await addDocument(project);
+    if (!response.error) {
+      redirect.push('/')
+    }
+    
+  }
+ 
   return (
     <div className='create-form'>
       <h2 className='page-title'>Create a new project</h2>
@@ -75,7 +112,6 @@ export default function Create() {
             type='date'
             onChange={(e) => setDueDate(e.target.value)}
             value={dueDate}
-            
           />
         </label>
         <label>
@@ -91,7 +127,6 @@ export default function Create() {
             onChange={(option) => setAssignedUsers(option)}
             options={users}
             isMulti
-            
           />
         </label>
         <button className='btn'>Add project</button>
