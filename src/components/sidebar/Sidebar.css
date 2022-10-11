@@ -62,8 +62,8 @@
 }
 @media screen and (max-width: 740px) {
   .sidebar {
-    width: 70px;
-    min-width: 50px;
+    width: 100px;
+    min-width: 80px;
     background: var(--primary-color);
     min-height: 100vh;
     box-sizing: border-box;
@@ -79,10 +79,11 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
   .sidebar .user p {
-    font-size: 12px;
+    /* font-size: 12px;
   font-weight: bold;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 1px; */
+  display: none;
   }
   .sidebar .links span {
     display: none;
@@ -91,7 +92,7 @@
   }
 
   .sidebar .links img {
-    margin-right: 2px;
+    margin-right: 22px;
     filter: invert(100%);
   }
   .sidebar .links a.active {
