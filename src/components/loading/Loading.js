@@ -1,9 +1,8 @@
 import './Loading.css'
 export default function Loading() {
   return (
-    <div className='loader'>
-      <div className='load'></div>
-      <div className='load'></div>
-    </div>
+    <section>
+      <h1 data-text='Loading...'>Loading...</h1>
+    </section>
   );
 }

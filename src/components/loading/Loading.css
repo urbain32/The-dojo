@@ -1,29 +1,45 @@
-.loader {
-  height: 20px;
-  transform-origin: bottom center;
-  animation: spinner 3s linear infinite;
+section {
+  /* width: 100%;
+  height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.load {
-  display: inline-block;
-  background-color: #267712;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  transform: scale(0);
-  animation: load 1.5s linear infinite;
-  margin: -10px;
+
+h1 {
+  position: relative;
+  font-size: 40px;
+  font-weight: 400;
+  color: #4d4d4d;
+  -webkit-text-stroke: 2px #666666;
 }
-.load:nth-child(2) {
-  background-color: #b5f0d4;
-  animation-delay: 0.8s;
+h1::before {
+  position: absolute;
+  content: attr(data-text);
+  /* top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; */
+  color: var(--highlight-color);
+  -webkit-text-stroke: 0px var(--primary-color);
+  overflow: hidden;
+  animation: loading 6s ease-out forwards;
 }
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
+
+@keyframes loading {
+  0% {
+    width: 0;
   }
-}
-@keyframes load {
-    50%{
-        transform: scale(1);
-    }
+  20% {
+    width: 45%;
+  }
+  80% {
+    width: 75%;
+  }
+  90% {
+    width: 85%;
+  }
+  100% {
+    width: 100%;
+  }
 }
