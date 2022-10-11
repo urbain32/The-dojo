@@ -9,9 +9,14 @@ export const useDocument = (collection, id) => {
   useEffect(() => {
     const ref = projectFirestore.collection(collection).doc(id);
     const unsubscribe = ref.onSnapshot(
-      (onsnapshot) => {
-        setDocument({ ...onsnapshot.data(), id: onsnapshot.id });
-        setError(null);
+      (snapshot) => {
+        if (snapshot.data()) {
+         setDocument({ ...snapshot.data(), id: snapshot.id });
+         setError(null); 
+        } else {
+          setError('Not such document')
+        }
+        
       },
       (err) => {
         console.log(err.message);
