@@ -3,8 +3,8 @@ const filterList = [
   'mine',
   'development',
   'design',
-  'marketing',
   'sales',
+  'marketing',
 ];
 
 export default function ProjectFilter({currentFilter,changeFilter}) {
