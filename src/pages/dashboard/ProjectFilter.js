@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const filterList = [
   'all',
   'mine',
@@ -9,16 +7,14 @@ const filterList = [
   'sales',
 ];
 
-export default function ProjectFilter() {
-  const [currentFilter, setCurrentFilter] = useState('all');
-  const handleClick = (newFilter) => {
-    console.log(newFilter);
-    setCurrentFilter(newFilter);
+export default function ProjectFilter({currentFilter,changeFilter}) {
+    const handleClick = (newFilter) => {     
+      changeFilter(newFilter);      
   };
   return (
     <div className='project-filter'>
-          <nav>
-              <p>Filter by: </p>
+      <nav>
+        <p>Filter by: </p>
         {filterList.map((f) => (
           <button
             key={f}
