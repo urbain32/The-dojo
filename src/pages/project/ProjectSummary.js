@@ -33,7 +33,7 @@ export default function ProjectSummary({ project }) {
         <button className='btn' onClick={handleclick}>
           Mark as complete
         </button>
-      )}
+     )} 
     </div>
   );
 }
