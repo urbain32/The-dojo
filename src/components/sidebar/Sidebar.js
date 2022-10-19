@@ -18,7 +18,7 @@ export default function Sidebar() {
         <div className='links'>
           <ul>
             <li>
-              <NavLink exact to='/'>
+              <NavLink end to='/'>
                 <img src={DashboardIcon} alt=' dashboard icom' />
                 <span>Dashboard</span>
               </NavLink>
