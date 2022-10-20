@@ -60,6 +60,7 @@
     width: inherit;
   }
 }
+
 @media screen and (max-width: 740px) {
   .sidebar {
     width: 100px;
